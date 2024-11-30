@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../service/AuthService';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -9,9 +10,13 @@ import { AuthService } from '../service/AuthService';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  resetPasswordForm: FormGroup;
+  resetPasswordForm!: FormGroup;
+  ParamsId: any;
 
-  constructor(private fb: FormBuilder, private service: AuthService) {
+  constructor(private fb: FormBuilder, private service: AuthService, private route: ActivatedRoute,private router: Router) {
+  }
+
+  ngOnInit(): void {
     this.resetPasswordForm = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -21,6 +26,7 @@ export class ResetPasswordComponent implements OnInit {
       { validator: this.passwordMatchValidator }
     );
   }
+
 
   get email() {
     return this.resetPasswordForm.get('email');
@@ -49,13 +55,10 @@ export class ResetPasswordComponent implements OnInit {
         confirmPassword: this.resetPasswordForm.get('confirmPassword')?.value
       }
       this.service.resetPassword(resetform).subscribe((res: any) => {
-        if(res){
+        if (res) {
           alert(res.message);
         }
       });
     }
   }
-  ngOnInit(): void {
-  }
-
 }

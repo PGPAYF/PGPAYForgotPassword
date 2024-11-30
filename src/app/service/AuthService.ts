@@ -13,4 +13,8 @@ export class AuthService {
     resetPassword(resetForm: any) {
         return this.http.post<any>(`${env.BaseUrl + this.backend}/resetpassword`, resetForm);
     }
+
+    GetUniqueIdForForgotPassword(uniqueId: any) {
+        return this.http.get<any>(`${env.BaseUrl + this.backend}/GetUniqueIdForForgotPassword?uniqueId=${uniqueId}`);
+    }
 }

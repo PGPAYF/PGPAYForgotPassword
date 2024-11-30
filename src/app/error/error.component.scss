@@ -1,0 +1,20 @@
+.error-page {
+    text-align: center;
+    padding: 50px;
+    h1 {
+      font-size: 2.5rem;
+      color: #ff4c4c;
+    }
+    p {
+      margin: 20px 0;
+      font-size: 1.2rem;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
