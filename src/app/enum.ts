@@ -1,6 +1,7 @@
 export enum env{
-    BaseUrl = 'https://pgpay.somee.com/api/'
-    //BaseUrl = 'https://localhost:7202/api/'
+    BaseUrl = 'https://pgpay.somee.com/api/',
+    //BaseUrl = 'https://localhost:7202/api/',
+    mainWebSite = 'https://pgpay-8c594.web.app/login'
 }
 
 export enum BackendName{

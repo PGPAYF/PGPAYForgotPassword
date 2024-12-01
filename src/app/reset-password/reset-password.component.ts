@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../service/AuthService';
 import { ActivatedRoute, Router } from '@angular/router';
+import { env } from '../enum';
 
 @Component({
   selector: 'app-reset-password',
@@ -57,6 +58,9 @@ export class ResetPasswordComponent implements OnInit {
       this.service.resetPassword(resetform).subscribe((res: any) => {
         if (res) {
           alert(res.message);
+          window.location.href = env.mainWebSite;
+        }else{
+          this.router.navigate(['error']);
         }
       });
     }
